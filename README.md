@@ -1,12 +1,31 @@
-# React + Vite
+# 📝 React Registration Form
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and responsive **registration form** built with **React**. This project demonstrates handling form inputs, managing state, validating fields, and giving feedback to users.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React class component structure
+- Real-time input handling
+- Form validation on submit
+- Success and error messages
+- Styled with custom CSS
 
-## Expanding the ESLint configuration
+## 📦 Tech Stack
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React (Class Components)
+- JavaScript (ES6+)
+- CSS
+
+## 🎯 Purpose
+
+This project was built as a practice mini-project to improve my skills in:
+- React fundamentals
+- Form handling and validation
+- UI/UX for basic forms
+- Version control using Git & GitHub
+
+## 💻 Getting Started
+
+1. Clone the repo  
+   ```bash
+   git clone https://github.com/your-username/react-form-registration.git
