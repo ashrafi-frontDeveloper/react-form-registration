@@ -42,8 +42,8 @@ class SigninForm extends Component {
 
     }
     submitHandler (event) {
-      // event.preventDefault()
-      console.log(event);
+      event.preventDefault()
+      this.props.onRegister(this.state)
     }
     fullNameHandler (event) {
       this.setState({ fullName: event.target.value })
@@ -92,7 +92,13 @@ export default class App extends Component {
 
     }
   }
-
+  handleRegisterUser (userData) {
+    this.setState(prev => ({
+      users: [...prev.users , userData],
+      isLogin : true
+    }), () => {
+      alert(`Welcome ${userData.fullName}!`);
+    })}
   render() {
     return (
         <div className="section">
@@ -109,7 +115,7 @@ export default class App extends Component {
                         this.state.isLogin ? (
                           <LoginForm />
                         ) : (
-                          <SigninForm />
+                          <SigninForm onRegister={this.handleRegisterUser} />
                         )
                       }
                     </div>
