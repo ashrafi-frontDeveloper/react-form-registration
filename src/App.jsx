@@ -8,11 +8,25 @@ class LoginForm extends Component {
       super()
       this.state = {
         email: '',
-        password: ''
+        password: '',
+        emailError: ''
       }
     }
+
+    emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     handleChange = (event) => {
       this.setState({ [event.target.name]: event.target.value })
+
+      const { name, value } = event.target
+      this.setState({ [name]: value })
+
+      if (name === "email") {
+        if (!this.emailRegex.test(value)) {
+          this.setState({ emailError: "Email is not valid." })
+        } else {
+          this.setState({ emailError: "" })
+        }
+      }
     }
   
     handleSubmit = (event) => {
@@ -33,6 +47,9 @@ class LoginForm extends Component {
                   <div className="form-group">
                     <input value={this.state.email} onChange={this.handleChange} type="email" name="email" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
                     <i className="input-icon uil uil-at"></i>
+                    {this.state.emailError && (
+                    <p className="text-danger small mt-1">{this.state.emailError}</p>
+                    )}
                   </div>	
                   <div className="form-group mt-2">
                     <input value={this.state.password} onChange={this.handleChange} type="password" name="password" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
@@ -54,12 +71,25 @@ class SigninForm extends Component {
       this.state = {
         fullName : '',
         email: '',
-        password: ''
+        password: '',
+        emailError: ''
       }
 
     }
+    emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
     handleChange = (event) => {
       this.setState({ [event.target.name]:event.target.value })
+
+      const { name, value } = event.target
+      this.setState({ [name]: value })
+
+      if (name === "email") {
+        if (!this.emailRegex.test(value)) {
+          this.setState({ emailError: "Email is not valid." })
+        } else {
+          this.setState({ emailError: "" })
+        }
+      }
     }
   
     handleSubmit = (event) => {
@@ -85,6 +115,9 @@ class SigninForm extends Component {
                 <div className="form-group mt-2">
                   <input onChange={this.handleChange} type="email" value={this.state.email} name="email" className="form-style" placeholder="Your Email" id="logemail" autoComplete="off" />
                   <i className="input-icon uil uil-at"></i>
+                  {this.state.emailError && (
+                    <p className="text-danger small mt-1">{this.state.emailError}</p>
+                  )}
                 </div>	
                 <div className="form-group mt-2">
                   <input onChange={this.handleChange} type="password" value={this.state.password} name="password" className="form-style" placeholder="Your Password" id="logpass" autoComplete="off" />
