@@ -18,6 +18,11 @@ class LoginForm extends Component {
     handleSubmit = (event) => {
       event.preventDefault()
       this.props.onLogin(this.state.email, this.state.password)
+ 
+      this.setState({
+        email: '',
+        password: ''
+      })
     }
     render() {
       return (
@@ -60,6 +65,12 @@ class SigninForm extends Component {
     handleSubmit = (event) => {
      event.preventDefault()
       this.props.onRegister(this.state)
+
+      this.setState({
+        fullName: '',
+        email: '',
+        password: ''
+      })
     }
       render () {
         return (
