@@ -93,7 +93,9 @@ export default class App extends Component {
     this.state = {
       isLogin : true,
       users : [],
-      loggedInUser: null
+      loggedInUser: null,
+      showModal: false,
+      modalMessage: ''
     }
   }
   handleRegisterUser = (userData) => {
@@ -101,7 +103,7 @@ export default class App extends Component {
       users: [...prev.users, userData],
       isLogin: true
     }), () => {
-      alert(`Welcome ${userData.fullName}! You can now log in.`)
+      this.showModal(`Welcome ${userData.fullName}! You can now log in.`)
     })
   }
 
@@ -109,15 +111,33 @@ export default class App extends Component {
     const foundUser = this.state.users.find(user => user.email === email && user.password === password)
     if (foundUser) {
       this.setState({ loggedInUser: foundUser }, () => {
-        alert(`Welcome back, ${foundUser.fullName}!`)
+        this.showModal(`Welcome back, ${foundUser.fullName}!`)
       })
     } else {
-      alert("Invalid email or password.")
+
+      this.showModal("Invalid email or password.")
     }
   }
 
+  showModal = (message) => {
+    this.setState({ showModal: true, modalMessage: message })
+    setTimeout(() => {
+      this.setState({ showModal: false, modalMessage: '' })
+    }, 3000)
+  }
+  
   render() {
     return (
+      <>
+        {this.state.showModal && (
+          <div className="modal-overlay">
+            <div className="modal-content">
+              <span className="close-btn" onClick={() => this.setState({ showModal: false })}>&times;</span>
+              <p>{this.state.modalMessage}</p>
+              <button onClick={() => this.setState({ showModal: false })}>OK</button>
+            </div>
+          </div>
+        )}
         <div className="section">
           <div className="container">
             <div className="row full-height justify-content-center">
@@ -142,6 +162,7 @@ export default class App extends Component {
             </div>
           </div>
         </div>
+      </>
     )
   }
 }
